@@ -1,15 +1,38 @@
-import java.io.File;
-import java.util.Objects;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProcessListPNG {
-    public static void main(String[] args) {
-        File directorio = new File(args[0]);
-        for (File f : Objects.requireNonNull(directorio.listFiles())
-        ) {
-            if (f.getName().endsWith(".png")) {
-                System.out.println(f.getName());
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce la ruta absoluta del directorio para listar la imágenes: ");
+        String ruta = scanner.nextLine();
+        scanner.close();
+        if (formatoRutaCorrecta(ruta)) {
+            System.out.println("RUTA CORRECTA");
+            ProcessBuilder pb = new ProcessBuilder("bash", "-c", "ls " + ruta + " | grep .png");
+//            + " | grep *.png"
+            Process p = pb.start();
+            try {
+                InputStream is = p.getInputStream();
+                int c;
+                while ((c = is.read()) != - 1) System.out.print((char) c);
+                is.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+
             }
         }
-        System.out.println("Terminado de listar");
+
+
+    }
+
+    public static boolean formatoRutaCorrecta(String ruta) {
+        Pattern pattern = Pattern.compile("^(\\/[\\w-]+)+\\/?$");
+        Matcher matcher = pattern.matcher(ruta);
+        return matcher.find();
     }
 }
+
