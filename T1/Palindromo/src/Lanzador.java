@@ -1,10 +1,13 @@
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class Lanzador {
     public static void main(String[] args) throws IOException {
-        ProcessBuilder pbMayusculas = new ProcessBuilder("java", "Mayusculas", "hola muy buenas a todos guapos");
-        ProcessBuilder pbPalindromo = new ProcessBuilder("java", "Palindromo", "Anita lava la tina");
+        ProcessBuilder pbMayusculas = new ProcessBuilder("java", "Mayusculas.java", "hola muy buenas a todos guapos");
+        ProcessBuilder pbPalindromo = new ProcessBuilder("java", "Palindromo.java", "Anita lava la tina");
+        pbMayusculas.directory(new File("src"));
+        pbPalindromo.directory(new File("src"));
 
         Process pMayusculas = pbMayusculas.start();
         Process pPalindromo = pbPalindromo.start();
