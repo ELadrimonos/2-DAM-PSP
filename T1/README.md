@@ -8,5 +8,5 @@
 - [ProcessKillNotepad](./ProcessKillNotepad/src/ProcessKillNotepad.java)
 - [ProcessListPNG](./ProcessListPNG/src/ProcessListPNG.java)
 - [SumadorLanzador](./SumadorLanzador/src/Lanzador.java)
-- [Palindromo](./Palindromo/src/Lanzador.java)
+- [Palíndromo](./Palindromo/src/Lanzador.java)
 - [LecturaVisitaWeb](./LecturaVisitaWeb/src/LeerWeb.java)

@@ -5,7 +5,7 @@ public class Sumador {
             int suma = sumaIntervalo(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
             System.out.println("La suma es: " + suma);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 

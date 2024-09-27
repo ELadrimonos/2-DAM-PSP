@@ -4,7 +4,7 @@ import java.io.InputStream;
 public class Lanzador {
     public static void main(String[] args) {
         File directorio = new File("src");
-        ProcessBuilder pb =  new ProcessBuilder("java", "Sumador");
+        ProcessBuilder pb =  new ProcessBuilder("java", "Sumador.java", "1", "10");
         pb.directory(directorio);
         try {
             Process p1 = pb.start();
