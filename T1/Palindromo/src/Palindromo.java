@@ -4,7 +4,6 @@ import java.io.FileWriter;
 public class Palindromo {
     public static void main(String[] args) {
         boolean palindromo = esPalindromo(args[0]);
-        System.out.println(args[0]);
         System.out.println("Es palindromo: " + palindromo);
         guardarEnFichero(args[0], "todas.txt");
         guardarEnFichero(args[0],  (!palindromo ? "No" : "") + "palindromo.txt");
