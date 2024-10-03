@@ -1,11 +1,20 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 public class Lanzador {
     public static void main(String[] args) throws IOException {
-        ProcessBuilder pbMayusculas = new ProcessBuilder("java", "Mayusculas.java", "hola muy buenas a todos guapos");
-        ProcessBuilder pbPalindromo = new ProcessBuilder("java", "Palindromo.java", "Anita lava la tina");
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("Dame una cadena para pasar a mayusculas: ");
+        String mayusculas = entrada.nextLine();
+
+        System.out.print("Dame una cadena para comprobar si es palindromo: ");
+        String palindromo = entrada.nextLine();
+
+        ProcessBuilder pbMayusculas = new ProcessBuilder("java", "Mayusculas.java", mayusculas);
+        ProcessBuilder pbPalindromo = new ProcessBuilder("java", "Palindromo.java", palindromo);
         pbMayusculas.directory(new File("src"));
         pbPalindromo.directory(new File("src"));
 
