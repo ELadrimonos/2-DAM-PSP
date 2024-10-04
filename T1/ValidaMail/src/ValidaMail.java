@@ -13,6 +13,8 @@ public class ValidaMail {
         else if (!primerIdentificadorValido) System.out.println("ERROR: El primer identificador ha de tener una longitud mínima de 3 caracteres!");
         else if (!extensionValida) System.out.println("ERROR: El dominio no es ni com/es/org!");
 
+        else System.exit(1);
+
 //        return (arrobaValido && extensionValida && primerIdentificadorValido && segundoIdentificadorValido);
     }
 

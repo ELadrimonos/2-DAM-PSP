@@ -7,8 +7,6 @@ public class Principal {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        boolean emailValido = false;
-
 
 
         for (int i = 0; i < 3; i++) {
@@ -24,10 +22,19 @@ public class Principal {
                     System.out.print((char) c);
                 }
                 is.close();
+                p.waitFor();
+                if (p.exitValue() == 1) {
+                    i = 3;
+                    System.out.println("Enhorabuena!!! El email introducido es correcto!!!");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
+
+        System.out.println("Fin del programa");
 
 
         entrada.close();
