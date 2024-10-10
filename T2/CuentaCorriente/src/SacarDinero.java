@@ -7,6 +7,6 @@ public class SacarDinero extends Thread{
 
     public void run() {
         super.run();
-        c.RetirarDinero(100, this.getName());
+        c.RetirarDinero(30, this.getName());
     }
 }

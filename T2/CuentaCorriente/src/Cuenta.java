@@ -17,6 +17,7 @@ public class Cuenta {
         if (this.saldo >= cant) {
             System.out.println("SE VA A RETIRAR SALDO: (ACTUAL ES: " + this.getSaldo() + ")");
             this.restar(cant);
+            System.out.println(nombre +" retira =>" + cant + " ACTUAL(" + this.getSaldo() + ")");
         } else System.out.println("No se puede retirar dineto, NO HAY SALDO(" + this.getSaldo() + ")");
     }
 }
