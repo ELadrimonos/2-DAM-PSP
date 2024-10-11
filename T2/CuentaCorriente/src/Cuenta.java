@@ -1,23 +1,23 @@
 public class Cuenta {
-    private int saldo = 0;
+    public static int saldo;
 
-    public Cuenta(int saldo) {
-        this.saldo = saldo;
+    public Cuenta(int fsaldo) {
+        saldo = fsaldo;
     }
 
     public int getSaldo() {
         return saldo;
     }
 
-    public void restar(int saldo) {
-        this.saldo -= saldo;
+    public void restar(int fsaldo) {
+        saldo -= fsaldo;
     }
 
-    public void RetirarDinero(int cant, String nombre) {
-        if (this.saldo >= cant) {
-            System.out.println("SE VA A RETIRAR SALDO: (ACTUAL ES: " + this.getSaldo() + ")");
-            this.restar(cant);
-            System.out.println(nombre +" retira =>" + cant + " ACTUAL(" + this.getSaldo() + ")");
-        } else System.out.println("No se puede retirar dineto, NO HAY SALDO(" + this.getSaldo() + ")");
+    synchronized public void RetirarDinero(int cant, String nombre) {
+        if (saldo >= cant) {
+            System.out.println("SE VA A RETIRAR SALDO: (ACTUAL ES: " + getSaldo() + ")");
+            restar(cant);
+            System.out.println(nombre + " retira =>" + cant + " ACTUAL(" + getSaldo() + ")");
+        } else System.out.println("No se puede retirar dinero, NO HAY SALDO(" + getSaldo() + ") (intentaste retirar " + cant + " )");
     }
 }

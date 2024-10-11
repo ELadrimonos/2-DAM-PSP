@@ -6,6 +6,8 @@ public class SacarDinero extends Thread{
     }
 
     public void run() {
-        c.RetirarDinero(30, this.getName());
+        for (int i = 0; i < 4; i++) {
+            c.RetirarDinero(30, this.getName());
+        }
     }
 }
