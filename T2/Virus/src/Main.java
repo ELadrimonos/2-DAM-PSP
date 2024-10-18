@@ -11,6 +11,8 @@ public class Main {
         entrada.close();
         Thread[] hilos = new Thread[n];
 
+
+
         for (int i = 0; i < n; i++) {
             int num = i;
             hilos[i] = new Thread(() -> {
@@ -23,15 +25,16 @@ public class Main {
                     if (valor == 5) System.out.print("X");
                     else if (valor == 10) System.out.print("XX");
                     try {
-                        sleep(500);
+                        // Cuantos más virus tengamos la ejecución se realizará más rápido
+                        sleep(500 / n);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } while (progreso < 100);
                 System.out.print(" 100%\n");
             });
-            hilos[i].start();
-            hilos[i].join();
+            //NOTE: Con run es lo mismo que hacer un start() y un join(), ejecuta en el mismo hilo que el programa
+            hilos[i].run();
         }
         System.out.println("\nHAS SIDO INFECTADO!");
     }
