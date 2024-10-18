@@ -4,7 +4,7 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         System.out.println("Número de virus a ejecutar");
         Scanner entrada = new Scanner(System.in);
         int n = entrada.nextInt();
@@ -22,8 +22,8 @@ public class Main {
                 do {
                     int valor = random.nextInt(1, 3) * 5;
                     progreso += valor;
-                    if (valor == 5) System.out.print("X");
-                    else if (valor == 10) System.out.print("XX");
+                    if (valor == 5) System.out.print("#");
+                    else if (valor == 10) System.out.print("##");
                     try {
                         // Cuantos más virus tengamos la ejecución se realizará más rápido
                         sleep(500 / n);
@@ -31,7 +31,7 @@ public class Main {
                         throw new RuntimeException(e);
                     }
                 } while (progreso < 100);
-                System.out.print(" 100%\n");
+                System.out.println(" 100%");
             });
             //NOTE: Con run es lo mismo que hacer un start() y un join(), ejecuta en el mismo hilo que el programa
             hilos[i].run();
