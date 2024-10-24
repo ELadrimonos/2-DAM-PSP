@@ -17,10 +17,14 @@ public class HiloCliente extends Thread {
 
     }
 
-    private void reservaEntrada(String nombre, int cantidad){
-        EntradasDisponibles -= cantidad;
-        EntradasVendidas += cantidad;
-        if (EntradasDisponibles > 0) System.out.printf("%d reservadas para Cliente %s\n", cantidad, nombre);
-        else System.out.println("No hay entradas disponibles para Cliente " + nombre);
+    //NOTE: Uso static para que funcione synchronized bien ya que modifico variables estáticas
+    private static synchronized void reservaEntrada(String nombre, int cantidad) {
+
+        if (EntradasDisponibles - cantidad >= 0) {
+            System.out.printf("%d reservadas para Cliente %s\n", cantidad, nombre);
+            EntradasDisponibles -= cantidad;
+            EntradasVendidas += cantidad;
+        } else
+            System.out.printf("No hay entradas disponibles para Cliente %s (Intento de comprar %d entradas)\n", nombre, cantidad);
     }
 }
