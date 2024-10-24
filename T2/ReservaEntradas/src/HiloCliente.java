@@ -13,9 +13,14 @@ public class HiloCliente extends Thread {
     public void run() {
         Random random = new Random();
         int valor = random.nextInt(1, 11);
-        EntradasDisponibles -= valor;
-        EntradasVendidas += valor;
-        System.out.printf("%d reservadas para Cliente %s\n", valor, getName());
+        reservaEntrada(getName(), valor);
 
+    }
+
+    private void reservaEntrada(String nombre, int cantidad){
+        EntradasDisponibles -= cantidad;
+        EntradasVendidas += cantidad;
+        if (EntradasDisponibles > 0) System.out.printf("%d reservadas para Cliente %s\n", cantidad, nombre);
+        else System.out.println("No hay entradas disponibles para Cliente " + nombre);
     }
 }
