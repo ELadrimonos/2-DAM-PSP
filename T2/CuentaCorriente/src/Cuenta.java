@@ -9,8 +9,12 @@ public class Cuenta {
         return saldo;
     }
 
-    public void restar(int fsaldo) {
+    private void restar(int fsaldo) {
         saldo -= fsaldo;
+    }
+
+    private void sumar(int fsaldo) {
+        saldo += fsaldo;
     }
 
     synchronized public void RetirarDinero(int cant, String nombre) {
@@ -18,6 +22,13 @@ public class Cuenta {
             System.out.println("SE VA A RETIRAR SALDO: (ACTUAL ES: " + getSaldo() + ")");
             restar(cant);
             System.out.println(nombre + " retira =>" + cant + " ACTUAL(" + getSaldo() + ")");
-        } else System.out.println("No se puede retirar dinero, NO HAY SALDO(" + getSaldo() + ") (intentaste retirar " + cant + " )");
+        } else
+            System.out.println("No se puede retirar dinero, NO HAY SALDO(" + getSaldo() + ") (intentaste retirar " + cant + " )");
+    }
+
+    synchronized public void IngresarDinero(int cant, String nombre) {
+        System.out.println("SE VA A INGRESAR SALDO: (ACTUAL ES: " + getSaldo() + ")");
+        sumar(cant);
+        System.out.println(nombre + " ingresa =>" + cant + " ACTUAL(" + getSaldo() + ")");
     }
 }
