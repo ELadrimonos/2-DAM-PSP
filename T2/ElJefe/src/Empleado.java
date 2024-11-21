@@ -1,12 +1,28 @@
-public class Empleado {
-    String nombre;
+public class Empleado extends Thread {
+    //NOTE: Para que notify funcione las funciones deben de ejecutarse en el mismo objeto
     Saludo saludo;
     boolean esJefe;
 
-    public Empleado(String nombre, boolean esJefe) {
-        this.nombre = nombre;
+    public Empleado(String nombre, boolean esJefe, Saludo saludo) {
+        super(nombre);
         this.esJefe = esJefe;
-        this.saludo = new Saludo(nombre, esJefe);
-        saludo.start();
+        this.saludo = saludo;
+    }
+
+    public void run() {
+        if (esJefe) {
+            try {
+                sleep(2000);
+                saludo.SaludoJefe(getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try {
+                saludo.SaludoEmpleado(getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
