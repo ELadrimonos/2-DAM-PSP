@@ -1,20 +1,23 @@
 public class Main {
     public static void main(String[] args) {
-        DatoCompartido compartido = new DatoCompartido();
+        int limite = 5;
+        DatoCompartido compartido = new DatoCompartido(limite);
 
         Thread consumidor = new Thread(() -> {
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i <= limite; i++) {
                 System.out.println("Consumidor: " + compartido.obtener());
+                compartido.mostrarDatos();
             }
         });
 
         Thread productor = new Thread(() -> {
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i <= limite; i++) {
                 compartido.poner(i);
                 System.out.println("Productor: " + compartido.dato);
+                compartido.mostrarDatos();
             }
         });
-        consumidor.start();
         productor.start();
+        consumidor.start();
     }
 }
