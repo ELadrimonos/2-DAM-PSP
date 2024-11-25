@@ -5,7 +5,9 @@ public class PrincipalOutput {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        for (int i = 0; i < 3; i++) {
+        boolean emailValido = false;
+
+        for (int i = 0; i < 3 && !emailValido; i++) {
             System.out.println("Introduce un email: ");
             String email = entrada.nextLine();
 
@@ -41,7 +43,7 @@ public class PrincipalOutput {
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line); // Mostrar la salida en tiempo real
                     if (line.contains("es correcto")) {
-                        i = 3; // Salir del bucle
+                        emailValido = true;
 
                     }
                 }
