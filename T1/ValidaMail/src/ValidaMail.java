@@ -8,13 +8,14 @@ public class ValidaMail {
         boolean primerIdentificadorValido = comprobarPrimerIdentificador(email);
         boolean segundoIdentificadorValido = comprobarSegundoIdentificador(email);
 
-        if (!arrobaValido) System.out.println("ERROR: El email no contiene un @!");
-        else if (!segundoIdentificadorValido) System.out.println("ERROR: No existe segundo identificador!");
-        else if (!primerIdentificadorValido) System.out.println("ERROR: El primer identificador ha de tener una longitud mínima de 3 caracteres!");
-        else if (!extensionValida) System.out.println("ERROR: El dominio no es ni com/es/org!");
+        if (!arrobaValido) System.err.println("ERROR: El email no contiene un @!");
+        else if (!segundoIdentificadorValido) System.err.println("ERROR: No existe segundo identificador!");
+        else if (!primerIdentificadorValido) System.err.println("ERROR: El primer identificador ha de tener una longitud mínima de 3 caracteres!");
+        else if (!extensionValida) System.err.println("ERROR: El dominio no es ni com/es/org!");
 
-        else System.exit(1);
+        else System.exit(0);
 
+        System.exit(1);
 //        return (arrobaValido && extensionValida && primerIdentificadorValido && segundoIdentificadorValido);
     }
 

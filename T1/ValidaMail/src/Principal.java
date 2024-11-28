@@ -16,14 +16,14 @@ public class Principal {
             pb.directory(new File("src"));
             try {
                 Process p = pb.start();
-                InputStream is = p.getInputStream();
+                InputStream is = p.getErrorStream();
                 int c;
                 while ((c = is.read()) != - 1) {
-                    System.out.print((char) c);
+                    System.err.print((char) c);
                 }
                 is.close();
                 p.waitFor();
-                if (p.exitValue() == 1) {
+                if (p.exitValue() == 0) {
                     emailValido = true;
                     System.out.println("Enhorabuena!!! El email introducido es correcto!!!");
                 }
