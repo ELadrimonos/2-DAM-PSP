@@ -15,3 +15,11 @@
 - [Reserva Entradas](./ReservaEntradas/src/Main.java)
 - [Lambda Pares Impares](./LambdaParImpar/src/Main.java)
 - [Virus](./Virus/src/Main.java)
+- [Sincronizar](./Sincronizar/src/Main.java)
+- [Consumidor Productor](./ConsumidorProductor/src/Main.java)
+- [Saludo Jefe Empleados](./ElJefe/src/Main.java)
+- [Lavavajillas](./Lavavajillas/src/Main.java)
+
+## Examen
+1. [Act. 1](./Examen/src/actividad1/Main.java)
+2. [Act. 2](./Examen/src/actividad2/Main.java)
