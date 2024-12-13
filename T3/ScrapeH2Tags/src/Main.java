@@ -9,15 +9,17 @@ public class Main {
 
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
-        final String dominio = "www.upv.es";
+        final String dominio = "www.marca.com";
         final String protocolo = "https";
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Dime una etiqueta HTML para buscar en " + dominio + " (sin <>): ");
+        System.out.println("Dime una etiqueta HTML para buscar en " + dominio + " (sin <> y vacío para h2): ");
         String etiqueta = scanner.nextLine();
         try {
-            String sUrlDirecta = protocolo + "://" + dominio + "/";
-            URL url = new URL(sUrlDirecta);
+            String sUrl = protocolo + "://" + dominio + "/";
+            URL url = new URL(sUrl);
+
+            etiqueta = (etiqueta.isEmpty()) ? "h2" : etiqueta;
 
             printHTMLTag(url, etiqueta);
         } catch (MalformedURLException e) {
