@@ -45,12 +45,20 @@ public class Main {
 
             File archivoOutput = new File("Resultados_<" + etiqueta + ">_en_" + url.getHost() + ".html");
             BufferedWriter bw = new BufferedWriter(new FileWriter(archivoOutput));
+            boolean existenDatos = false;
 
             while (matcher.find()) {
+                existenDatos = true;
                 String contenido = matcher.group(0);
                 bw.write(contenido);
                 bw.newLine();
             }
+
+            if (!existenDatos) {
+                bw.write("No se han encontrado resultados");
+                System.err.println("No se han encontrado resultados");
+            }
+
             bw.close();
             System.out.println("Resultados guardados en: " + archivoOutput.getAbsolutePath());
 
