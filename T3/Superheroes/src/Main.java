@@ -38,20 +38,28 @@ public class Main {
     public static void crearHTML(String nombreFichero, boolean esMarvel) {
         File archivo = new File(nombreFichero + (nombreFichero.endsWith(".html") ? "" : ".html"));
 
-        final String cabecera = "<html><head><title>" + nombreFichero + "</title></head><body>";
+        final String cabecera = "<html><head><title>" + nombreFichero.toUpperCase() + "</title></head><body>";
+
         final String finArchivo = "</body></html>";
-        final String tablaHTML = "<table style=\"margin: auto;\"><thead><tr><th colspan=\"4\">Superheroes</th></tr>" +
-                "<tr><th>Imagen</th><th>Nombre</th><th>Identidad secreta</th><th>Descripcion</th></tr><thead><tbody>";
+
+        final String tablaHTML = "<table style=\"margin: auto;border-spacing: 30px;font-family: Arial, Helvetica, " +
+                "sans-serif;\"><thead><tr><th colspan=\"4\" style=\"font-size: 2em;\">SUPERHEROES</th></tr>" +
+                "<tr style=\"font-size: 1.8em;\"><th>Imagen</th><th>Nombre</th><th>Identidad secreta</th>" +
+                "<th>Descripcion</th></tr><thead><tbody>";
+
         final String finTablaHTML = "</tbody></table>";
-        String contenidoTablaHTML = "";
+
+        StringBuilder contenidoTablaHTML = new StringBuilder();
 
         for (Heroe heroe : heroes) {
             if (heroe.esMarvel() == esMarvel) {
                 String imagen = obtenerImagenHeroe(heroe.id);
-                String filaHTML = String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
+
+                String filaHTML = String.format("<tr><td>%s</td><td style=\"text-align: center;\">%s</td><td style=" +
+                                "\"text-align: center;\">%s</td><td>%s</td></tr>",
                         imagen, heroe.nombre, heroe.identidadSecreta, heroe.descripcion);
 
-                contenidoTablaHTML += filaHTML;
+                contenidoTablaHTML.append(filaHTML);
             }
         }
 
@@ -105,7 +113,7 @@ public class Main {
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error en el input stream: " + e.getMessage());
         }
         return "";
     }
