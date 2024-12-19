@@ -38,7 +38,7 @@ public class Main {
     public static void crearHTML(String nombreFichero, boolean esMarvel) {
         File archivo = new File(nombreFichero + (nombreFichero.endsWith(".html") ? "" : ".html"));
 
-        final String cabecera = "<html><head><title>" + nombreFichero.toUpperCase() + "</title></head><body>";
+        final String cabecera = "<html lang=\"es\"><head><title>" + nombreFichero.toUpperCase() + "</title></head><body>";
 
         final String finArchivo = "</body></html>";
 
