@@ -45,7 +45,7 @@ public class Main {
         final String tablaHTML = "<table style=\"margin: auto;border-spacing: 30px;font-family: Arial, Helvetica, " +
                 "sans-serif;\"><thead><tr><th colspan=\"4\" style=\"font-size: 2em;\">SUPERHEROES</th></tr>" +
                 "<tr style=\"font-size: 1.8em;\"><th>Imagen</th><th>Nombre</th><th>Identidad secreta</th>" +
-                "<th>Descripcion</th></tr><thead><tbody>";
+                "<th>Descripcion</th></tr></thead><tbody>";
 
         final String finTablaHTML = "</tbody></table>";
 
