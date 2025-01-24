@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Servidor {
 
-    public static final int PUERTO = 2000;
+    public static final int PUERTO = 6000;
     public static DatagramSocket socket = null;
 
     private static final ArrayList<String> butacas = new ArrayList<>(4);
