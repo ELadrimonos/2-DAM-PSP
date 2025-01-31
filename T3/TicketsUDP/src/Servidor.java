@@ -8,7 +8,9 @@ public class Servidor {
     public static final int PUERTO = 6000;
     public static DatagramSocket socket = null;
 
-    private static final ArrayList<String> butacas = new ArrayList<>(4);
+    static final int MAX_RESERVAS = 5;
+
+    private static final ArrayList<String> butacas = new ArrayList<>(MAX_RESERVAS);
 
     public static void main(String[] args) throws IOException {
         socket = new DatagramSocket(PUERTO);
@@ -41,11 +43,11 @@ public class Servidor {
     }
 
     public static void listarButacas() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < MAX_RESERVAS; i++) {
             try {
                 String cliente = butacas.get(i);
                 System.out.println((i + 1) + ": " + cliente);
-            } catch (Exception e) {
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println((i + 1) + ": LIBRE!!!!");
             }
         }
