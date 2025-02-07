@@ -7,7 +7,7 @@ public class Profesional {
     Profesional(String nombre, int edad, char genero, int tipoProfesional) {
         if (genero != 'm' && genero != 'f') throw new IllegalArgumentException("Género invalido, ¿has introducido el valor en minuscula?");
         if (edad < 0) throw new IllegalArgumentException("La edad no puede ser menor que 0, ¿qué haces?");
-        if (tipoProfesional < 0 || tipoProfesional > 3) throw new IllegalArgumentException("Tipo de profesional es invalido.");
+        if (tipoProfesional <= 0 || tipoProfesional > 3) throw new IllegalArgumentException("Tipo de profesional es invalido.");
 
         this.nombre = nombre;
         this.edad = edad;
@@ -29,5 +29,23 @@ public class Profesional {
 
     public int getEdad() {
         return edad;
+    }
+
+    private String getGeneroString() {
+        return genero == 'm' ? "Masculino" : "Feminino";
+    }
+
+    private String getTipoString() {
+        return switch (this.tipoProfesional) {
+            case 2 -> "Directivo";
+            case 3 -> "Fisioterapeuta";
+            default -> "Jugador";
+        };
+    }
+
+    @Override
+    public String toString() {
+        return getNombre() + " de " + this.edad + " años, del genero " +
+                getGeneroString() + " y tipo " +  getTipoString() + ".";
     }
 }
